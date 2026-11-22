@@ -1,0 +1,1 @@
+{"expo":{"name":"DOMIVIK","slug":"domivik","scheme":"domivik","version":"0.1.0","orientation":"portrait","userInterfaceStyle":"dark","plugins":["expo-router","expo-sqlite","expo-document-picker","expo-image-picker","expo-notifications"],"ios":{"supportsTablet":true},"android":{"edgeToEdgeEnabled":true}}}

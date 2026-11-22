@@ -1,0 +1,8 @@
+import React from 'react';
+import {View,Text,TouchableOpacity,StyleSheet,ScrollView} from 'react-native';
+import {useLocalSearchParams,router} from 'expo-router';
+import {Ionicons} from '@expo/vector-icons';
+import {modules} from '../src/modules';
+import {theme} from '../src/theme';
+export default function Module(){const {key}=useLocalSearchParams<{key:string}>();const m=modules.find(x=>x.key===key);return <ScrollView style={s.root} contentContainerStyle={s.content}><TouchableOpacity onPress={()=>router.back()} style={s.back}><Ionicons name="arrow-back" size={23} color={theme.white}/><Text style={{color:theme.white}}>Acasă</Text></TouchableOpacity><Ionicons name={(m?.icon||'apps-outline') as any} size={42} color={theme.green}/><Text style={s.title}>{m?.title||'Modul'}</Text><Text style={s.subtitle}>{m?.description}</Text><View style={s.card}><Text style={s.cardTitle}>Modul pregătit pentru implementare</Text><Text style={s.cardText}>Acest ecran este o structură de navigație, nu o funcție completă. Baza de date și politicile de acces sunt în folderul supabase. Urmează formularele, fișierele, sincronizarea și testele.</Text></View></ScrollView>}
+const s=StyleSheet.create({root:{flex:1,backgroundColor:theme.bg},content:{padding:24,paddingTop:60},back:{flexDirection:'row',gap:8,alignItems:'center',marginBottom:36},title:{color:theme.white,fontSize:30,fontWeight:'900',marginTop:20},subtitle:{color:theme.muted,fontSize:15,marginTop:10},card:{backgroundColor:theme.surface,padding:22,borderRadius:20,marginTop:30,borderWidth:1,borderColor:theme.border},cardTitle:{color:theme.green,fontSize:17,fontWeight:'700'},cardText:{color:theme.muted,marginTop:12,lineHeight:22}});

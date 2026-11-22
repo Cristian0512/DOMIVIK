@@ -1,0 +1,14 @@
+import React from 'react';
+import {View,Text,ScrollView,TouchableOpacity,StyleSheet,StatusBar} from 'react-native';
+import {Ionicons} from '@expo/vector-icons';
+import {router} from 'expo-router';
+import {theme} from '../src/theme';
+import {modules} from '../src/modules';
+export default function Home(){return <View style={s.root}><StatusBar barStyle="light-content"/><ScrollView contentContainerStyle={s.content}>
+<View style={s.brand}><View style={s.mark}><Text style={s.markText}>DV</Text></View><View><Text style={s.word}>DOMI<Text style={{color:theme.green}}>VIK</Text></Text><Text style={s.tag}>TOTUL TĂU, BINE ORGANIZAT</Text></View></View>
+<Text style={s.hello}>Bun venit acasă!</Text><Text style={s.muted}>Tot ce contează, într-un singur loc.</Text>
+<View style={s.hero}><Text style={s.heroTitle}>Gospodăria ta, sub control</Text><Text style={s.heroSub}>Produse · facturi · rate · familie</Text><View style={s.heroLine}/><Text style={s.heroNote}>Conectează cloud-ul pentru date sincronizate.</Text></View>
+<Text style={s.section}>Modulele tale</Text><View style={s.grid}>{modules.map(m=><TouchableOpacity key={m.key} style={s.tile} onPress={()=>router.push({pathname:'/module',params:{key:m.key}})}><Ionicons name={m.icon as any} color={theme.green} size={26}/><Text style={s.tileTitle}>{m.title}</Text><Text style={s.tileSub} numberOfLines={2}>{m.description}</Text></TouchableOpacity>)}</View>
+<Text style={s.footer}>DOMIVIK · Prototip navigabil · Date demonstrative</Text>
+</ScrollView></View>}
+const s=StyleSheet.create({root:{flex:1,backgroundColor:theme.bg},content:{padding:20,paddingTop:60,paddingBottom:50},brand:{flexDirection:'row',alignItems:'center',gap:12,marginBottom:35},mark:{backgroundColor:theme.green,width:48,height:48,borderRadius:14,alignItems:'center',justifyContent:'center'},markText:{fontSize:21,fontWeight:'900',color:theme.bg},word:{fontSize:25,fontWeight:'900',letterSpacing:1,color:theme.white},tag:{fontSize:9,letterSpacing:1,color:theme.muted},hello:{color:theme.white,fontSize:28,fontWeight:'800'},muted:{color:theme.muted,marginTop:5,marginBottom:22},hero:{backgroundColor:theme.surface,borderRadius:22,padding:22,borderWidth:1,borderColor:theme.border,marginBottom:28},heroTitle:{fontSize:20,fontWeight:'800',color:theme.white},heroSub:{color:theme.green,marginTop:8},heroLine:{height:1,backgroundColor:theme.border,marginVertical:18},heroNote:{color:theme.muted,fontSize:12},section:{color:theme.white,fontSize:19,fontWeight:'800',marginBottom:14},grid:{flexDirection:'row',flexWrap:'wrap',justifyContent:'space-between',gap:12},tile:{width:'48%',backgroundColor:theme.surface,borderRadius:18,padding:16,minHeight:150,borderWidth:1,borderColor:theme.border},tileTitle:{color:theme.white,fontWeight:'700',fontSize:15,marginTop:12},tileSub:{color:theme.muted,fontSize:11,marginTop:6},footer:{color:theme.muted,fontSize:11,textAlign:'center',marginTop:30}});
